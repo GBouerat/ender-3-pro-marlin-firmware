@@ -1,10 +1,16 @@
 # Ender-3 Pro v4.2.7 firmwares
 
+## Marlin 2.1.2.1
+
+#### firmware-20231014-130924.bin
+
+- updated Marlin version
+
 ## Marlin 2.0.9.6
 
 #### firmware-20230528-195518.bin
 
- - enabled [BLTOUCH](https://marlinfw.org/docs/configuration/probes.html#bltouch)
+- enabled [BLTOUCH](https://marlinfw.org/docs/configuration/probes.html#bltouch)
 
 ## Marlin 2.0.7.2
 
