@@ -22,7 +22,8 @@
 #pragma once
 
 /**
- * ZRIB V5.3 Based on MKS BASE v1.4 with A4982 stepper drivers and digital micro-stepping
+ * ZONESTAR ZRIB V5.3 Based on MKS BASE v1.4 with A4982 stepper drivers and digital micro-stepping
+ * ATmega2560, ATmega1280
  */
 
 #include "env_validate.h"
@@ -62,10 +63,10 @@
 // Servos / XS3 Connector
 //
 #ifndef SERVO0_PIN
-  #define SERVO0_PIN                          11  // Analog Output
+  #define SERVO0_PIN                          65  // PWM
 #endif
 #ifndef SERVO1_PIN
-  #define SERVO1_PIN                          12  // Analog Output
+  #define SERVO1_PIN                          66  // PWM
 #endif
 
 //
@@ -424,17 +425,11 @@
  *  |--------|   Power
  *  |  GND   |
  *  ==========
- * XS3 Connector
+ * Servos / XS3 Connector
  *  =================
  *  | 65 | GND | 5V |      (65)  PK3 ** Pin86 ** A11
  *  |----|-----|----|
  *  | 66 | GND | 5V |      (66)  PK4 ** Pin85 ** A12
- *  =================
- * XS3/Servos Connector
- *  =================
- *  | 11 | GND | 5V |      (11)  PB5 ** Pin24 ** PWM11
- *  |----|-----|----|
- *  | 12 | GND | 5V |      (12)  PB6 ** Pin25 ** PWM12
  *  =================
  * ICSP
  *  =================

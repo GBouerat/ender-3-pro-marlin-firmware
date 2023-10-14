@@ -57,7 +57,7 @@ namespace ExtUI {
 
   static constexpr size_t eeprom_data_size = 48;
 
-  enum axis_t     : uint8_t { X, Y, Z, I, J, K, X2, Y2, Z2, Z3, Z4 };
+  enum axis_t     : uint8_t { X, Y, Z, I, J, K, U, V, W, X2, Y2, Z2, Z3, Z4 };
   enum extruder_t : uint8_t { E0, E1, E2, E3, E4, E5, E6, E7 };
   enum heater_t   : uint8_t { H0, H1, H2, H3, H4, H5, BED, CHAMBER, COOLER };
   enum fan_t      : uint8_t { FAN0, FAN1, FAN2, FAN3, FAN4, FAN5, FAN6, FAN7 };
@@ -163,6 +163,9 @@ namespace ExtUI {
 
   #if ENABLED(SHOW_REMAINING_TIME)
     inline uint32_t getProgress_seconds_remaining() { return ui.get_remaining_time(); }
+  #endif
+  #if ENABLED(SHOW_INTERACTION_TIME)
+    inline uint32_t getInteraction_seconds_remaining() { return ui.interaction_time; }
   #endif
 
   #if HAS_LEVELING
@@ -324,18 +327,18 @@ namespace ExtUI {
   #endif
 
   #if ENABLED(PIDTEMP)
-    float getPIDValues_Kp(const extruder_t);
-    float getPIDValues_Ki(const extruder_t);
-    float getPIDValues_Kd(const extruder_t);
-    void setPIDValues(const_float_t, const_float_t , const_float_t , extruder_t);
+    float getPID_Kp(const extruder_t);
+    float getPID_Ki(const extruder_t);
+    float getPID_Kd(const extruder_t);
+    void setPID(const_float_t, const_float_t , const_float_t , extruder_t);
     void startPIDTune(const celsius_t, extruder_t);
   #endif
 
   #if ENABLED(PIDTEMPBED)
-    float getBedPIDValues_Kp();
-    float getBedPIDValues_Ki();
-    float getBedPIDValues_Kd();
-    void setBedPIDValues(const_float_t, const_float_t , const_float_t);
+    float getBedPID_Kp();
+    float getBedPID_Ki();
+    float getBedPID_Kd();
+    void setBedPID(const_float_t, const_float_t , const_float_t);
     void startBedPIDTune(const celsius_t);
   #endif
 

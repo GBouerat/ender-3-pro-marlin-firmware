@@ -23,6 +23,8 @@
 
 /**
  * BigTreeTech SKR 1.3 pin assignments
+ * Schematic: https://green-candy.osdn.jp/external/MarlinFW/board_schematics/BTT%20SKR%20V1.3/SKR-V1.3-SCH.pdf
+ * Origin: https://github.com/bigtreetech/BIGTREETECH-SKR-V1.3/blob/master/BTT%20SKR%20V1.3/hardware/SKR-V1.3-SCH.pdf
  */
 
 #define BOARD_INFO_NAME "BTT SKR V1.3"
@@ -322,6 +324,9 @@
     #define BTN_EN2                  EXP2_05_PIN
     #define BTN_EN1                  EXP2_03_PIN
     #define BTN_ENC                  EXP1_02_PIN
+
+    #define BEEPER_PIN               EXP1_01_PIN
+    #define SDCARD_CONNECTION            ONBOARD
 
     #define TOUCH_BUTTONS_HW_SPI
     #define TOUCH_BUTTONS_HW_SPI_DEVICE        1

@@ -31,12 +31,14 @@
 
 /**
  * ZMIB pin assignments
+ * Schematic: https://green-candy.osdn.jp/external/MarlinFW/board_schematics/ZONESTAR%20ZMIB%20V2/ZMIB_V2_Schmatic.pdf
+ * Origin: https://github.com/ZONESTAR3D/Control-Board/blob/main/8bit/ZMIB/ZMIB%20V2/ZMIB_V2_Schmatic.pdf
  *
  * The ZMIB board needs a bootloader installed before Marlin can be uploaded.
  * If you don't have a chip programmer you can use a spare Arduino plus a few
  * electronic components to write the bootloader.
  *
- * See http://www.instructables.com/id/Burn-Arduino-Bootloader-with-Arduino-MEGA/
+ * See https://www.instructables.com/Burn-Arduino-Bootloader-with-Arduino-MEGA/
  */
 
 /**

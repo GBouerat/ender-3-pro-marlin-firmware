@@ -34,8 +34,8 @@ COMMIT_STEPS=0
 #cd "$CONFIGREPO" 2>/dev/null || { echo "Can't find Configurations repo!" ; exit 1; }
 
 ACTION=${1:-init}
-IMPORT=${2:-"import-2.0.x"}
-EXPORT=${3:-"bugfix-2.0.x"}
+IMPORT=${2:-"import-2.1.x"}
+EXPORT=${3:-"bugfix-2.1.x"}
 
 echo -n "Doing grhh ... " ; grhh ; echo
 
@@ -52,7 +52,7 @@ if [[ $ACTION == "manual" ]]; then
   git checkout $IMPORT || exit
 
   # Reset from the latest complete state
-  #git reset --hard bugfix-2.0.x
+  #git reset --hard bugfix-2.1.x
 
   cp "$MARLINREPO/Marlin/"Configuration*.h "$CDEF/"
   #git add . && git commit -m "Changes from Marlin ($(date '+%Y-%m-%d %H:%M'))."
@@ -140,8 +140,17 @@ if [[ $ACTION == "init" ]]; then
   cp -R "$TEMP/config" .
   find config -type f \! -name "Configuration*" -exec rm "{}" \;
 
+  addpathlabels() {
+    find config -name "Conf*.h" -print0 | while read -d $'\0' fn ; do
+      fldr=$(dirname "$fn")
+      blank_line=$(awk '/^\s*$/ {print NR; exit}' "$fn")
+      $SED -i~ "${blank_line}i\\\n#define CONFIG_EXAMPLES_DIR \"$fldr\"\\ " "$fn"
+      rm -f "$fn~"
+    done
+  }
+
   echo "- Adding path labels to all configs..."
-  config-labels.py >/dev/null 2>&1
+  addpathlabels
 
   git add . >/dev/null && git commit -m "Examples Customizations" >/dev/null
 
@@ -149,7 +158,7 @@ if [[ $ACTION == "init" ]]; then
   cp -R "$TEMP/config" .
 
   # Apply labels again!
-  config-labels.py >/dev/null 2>&1
+  addpathlabels
 
   git add . >/dev/null && git commit -m "Examples Extras" >/dev/null
 
